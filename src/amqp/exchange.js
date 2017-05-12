@@ -92,9 +92,6 @@ function publish( channel, options, topology, log, serializers, message ) {
 	if ( options.persistent || message.persistent ) {
 		publishOptions.persistent = true;
 	}
-  if (message.timestamp) {
-    publishOptions.timestamp = message.timestamp;
-  }
 
 	var effectiveKey = message.routingKey === '' ? '' : message.routingKey || publishOptions.type;
 	exLog.debug( "Publishing message ( type: '%s' topic: '%s', sequence: '%s', correlation: '%s', replyTo: '%s' ) to %s exchange '%s' on connection '%s'",
